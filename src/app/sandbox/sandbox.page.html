@@ -1,0 +1,41 @@
+<ion-content class="ion-padding" fullscreen="true">
+  @for (section of sections; track section.titre) {
+  <div class="section-container">
+    <h2>{{ section.titre }}</h2>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem">
+      <!-- Bouton gauche -->
+      <ion-button fill="clear" (click)="scrollLeft(section.titre)">
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+
+      <!-- Scroll horizontal -->
+      <div
+        class="horizontal-scroll"
+        #scrollContainers
+        [attr.data-section]="section.titre"
+      >
+        @for (annonce of section.annonces; track annonce.Annonce_id) {
+        <ion-card class="horizontal-card">
+          <img [src]="annonce.image" alt="Image" />
+          <ion-card-header>
+            <ion-card-title>{{ annonce.titre }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ annonce.description }}</p>
+            <p>Prix par jour : {{ annonce.prix_journee }} €</p>
+            <p>Places : {{ annonce.Nb_places }}</p>
+            <p>Mixte : {{ annonce.Mixte ? 'Oui' : 'Non' }}</p>
+          </ion-card-content>
+        </ion-card>
+        }
+      </div>
+
+      <!-- Bouton droit -->
+      <ion-button fill="clear" (click)="scrollRight(section.titre)">
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+  }
+</ion-content>

@@ -1,0 +1,44 @@
+.horizontal-scroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.horizontal-card {
+
+  max-width: 20rem;
+  flex-shrink: 0;
+  max-height: 30em;
+}
+
+.horizontal-scroll {
+  scrollbar-width: none; // Firefox
+}
+.horizontal-scroll::-webkit-scrollbar {
+  display: none; // Chrome
+}
+.section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.section-container {
+  margin-top: 2rem;
+   padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc; // Optionnel pour séparer visuellement
+}
+
+.section-container h2 {
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+ion-content {
+  --padding-top: 6rem;
+}
+
+

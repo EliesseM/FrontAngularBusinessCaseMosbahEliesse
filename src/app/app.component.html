@@ -1,0 +1,24 @@
+<ion-app>
+  <!-- Navbar -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Coliving</ion-title>
+
+      <ion-buttons slot="start">
+        @for (p of appPages; track p; let i = $index) {
+        <ion-button routerLink="{{ p.url }}" routerLinkActive="selected">
+          <ion-icon
+            slot="start"
+            [ios]="p.icon + '-outline'"
+            [md]="p.icon + '-sharp'"
+          ></ion-icon>
+          {{ p.title }}
+        </ion-button>
+        }
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Contenu principal -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

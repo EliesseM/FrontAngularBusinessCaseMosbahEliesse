@@ -10,9 +10,16 @@ export const routes: Routes = [
     path: 'folder/:id',
     loadComponent: () =>
       import('./folder/folder.page').then((m) => m.FolderPage),
-  },  {
+  },
+  {
     path: 'sandbox',
     loadComponent: () => import('./sandbox/sandbox.page').then( m => m.SandboxPage)
   },
+  {
+    path: 'services',
+    loadComponent: () => import('./services/services.page').then( m => m.ServicesPage)
+  },
+
+
 
 ];

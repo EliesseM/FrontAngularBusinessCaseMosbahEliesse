@@ -1,21 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen>
+  <section class="home-wrapper">
+    <div class="home-text">
+      <h1><span>Cosphere</span>, votre coliving moderne</h1>
+      <p>
+        Découvrez un espace où vivre, travailler et partager prennent tout leur
+        sens. Cosphere vous connecte à une communauté inspirante, dans des lieux
+        pensés pour votre bien-être.
+      </p>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div class="home-images">
+      <ion-img
+        src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg"
+      ></ion-img>
+      <ion-img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o="
+      ></ion-img>
+    </div>
+  </section>
 </ion-content>

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Nos Services</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="services-container">
+    <div class="service-card" *ngFor="let service of services">
+      <ion-img [src]="service.image" alt="{{ service.title }}"></ion-img>
+      <div class="service-info">
+        <h2>{{ service.title }}</h2>
+        <p>{{ service.description }}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

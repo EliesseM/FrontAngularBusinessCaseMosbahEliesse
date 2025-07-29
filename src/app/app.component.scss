@@ -120,19 +120,108 @@ ion-item.selected {
 
 ion-toolbar {
   --min-height: 60px;
-  --display: flex;
-  --flex-direction: column-reverse;
 }
 
 ion-button {
   color: white;
-  font-weight: 500;
   text-transform: none;
 }
 
-ion-title {
-  font-size: 1.2rem;
-max-width: 8rem;
+
+
+.custom-toolbar {
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-height: auto;
 }
+
+.custom-toolbar-content {
+  display: flex;
+  flex-direction: row-reverse; /* Inverser titre et boutons */
+  align-items: center;
+  
+}
+
+.toolbar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.logo-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  img {
+    max-height: 5rem;
+    object-fit: contain;
+  }
+}
+
+/* === Airbnb Style Toolbar === */
+.airbnb-toolbar {
+  --background: #ebebeb;
+  --ion-color-base: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 0.5rem 1rem;
+  --min-height: 64px;
+}
+
+.airbnb-toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* === Logo à gauche === */
+.airbnb-logo img {
+  height: 5rem;
+  object-fit: contain;
+}
+
+/* === Boutons centrés === */
+.airbnb-nav-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.airbnb-nav-buttons ion-button {
+  font-size: 1rem;
+  font-weight: 500;
+  --background: transparent;
+  color: #484848;
+  text-transform: none;
+  --color-hover: #000;
+  --ripple-color: transparent;
+  --box-shadow: none;
+  padding: 0;
+}
+
+/* === Actions à droite (langue, profil) === */
+.airbnb-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.airbnb-right-actions ion-icon {
+  font-size: 20px;
+  color: #555;
+}
+
+/* === Supprime bordure ion-button globale === */
+ion-button {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+
+
 
 

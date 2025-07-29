@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IonApp,  IonIcon, IonRouterOutlet, IonRouterLink, IonButtons, IonButton, IonHeader, IonToolbar, IonTitle } from '@ionic/angular/standalone';
+import { IonApp,  IonIcon, IonRouterOutlet, IonRouterLink, IonButton, IonHeader, IonToolbar} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import * as allicons from 'ionicons/icons';
 
@@ -9,17 +9,15 @@ import * as allicons from 'ionicons/icons';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, IonButtons, IonButton, IonApp,  IonIcon, IonRouterLink, IonRouterOutlet, IonHeader, IonToolbar, IonTitle],
+  imports: [RouterLink, RouterLinkActive, IonButton, IonApp,  IonIcon, IonRouterLink, IonRouterOutlet, IonHeader, IonToolbar,],
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
-    { title: 'sandbox', url: '/sandbox', icon: 'american-football' },
+    { title: 'Accueil', url: '/folder/inbox', icon: 'planet' },
+    { title: 'Annonces', url: '/sandbox', icon: 'bed' },
+    { title: 'Services', url: '/folder/favorites', icon: 'heart' },
+    { title: 'Messagerie', url: '/folder/archived', icon: 'mail' },
+    
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {

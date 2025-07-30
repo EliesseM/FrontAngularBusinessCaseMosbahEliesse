@@ -19,17 +19,17 @@ export class ServicesPage implements OnInit {
 services = [
     {
       title: 'Ménage Hebdomadaire',
-      image: 'assets/images/cleaning.jpg',
+      image: 'https://www.helpling.fr/wp-content/uploads/2023/08/Homme-et-Femme-de-Menage-Helpling-1-720x458.webp',
       description: 'Service de nettoyage professionnel inclus.',
     },
     {
       title: 'Espace Coworking',
-      image: 'assets/images/coworking.jpg',
+      image: 'https://bhz-coworking.bzh/wp-content/uploads/2019/04/bhz_coworking_accueil_01.jpg',
       description: 'Un espace calme et inspirant pour travailler.',
     },
     {
       title: 'Transport partagé',
-      image: 'assets/images/transport.jpg',
+      image: 'https://tribunedelyon.fr/wp-content/uploads/sites/5/2023/10/leogo-dr.jpg',
       description: 'Vélos et voitures disponibles en libre service.',
     },
   ];

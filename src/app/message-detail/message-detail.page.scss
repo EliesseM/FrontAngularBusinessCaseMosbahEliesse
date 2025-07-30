@@ -1,6 +1,57 @@
+// Ajout du nouveau thème ClassiqueSombreNature
+:root[data-theme='default'] {
+  --bubble-bg: #f1f1f1;
+  --bubble-color: #000;
+  --input-bg: #000;
+}
+
+:root[data-theme='dark'] {
+  --bubble-bg: #2b2b2b;
+  --bubble-color: #fff;
+  --input-bg: #111;
+}
+
+:root[data-theme='nature'] {
+  --bubble-bg: #e0f7e9;
+  --bubble-color: #2c3e50;
+  --input-bg: #b2dfdb;
+}
+
+// 🌿 Nouveau thème ClassiqueSombreNature
+:root[data-theme='classique-sombre-nature'] {
+  --bubble-bg: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+  --bubble-color: #ddd;
+  --input-bg: #1a1a1a;
+  --accent-color: #00b894;
+  --secondary-color: #74b9ff;
+  --nature-green: #00b894;
+  --classic-blue: #74b9ff;
+  --dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
+  --glass-bg: rgba(45, 52, 54, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-wrapper {
+  width: 40rem;
+  margin: 0 auto;
+  height: 100vh;
+  box-shadow: 0 0 20px rgb(0, 0, 0);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  
+  // Style spécial pour le thème ClassiqueSombreNature
+  &[data-theme='classique-sombre-nature'] {
+    background: var(--dark-gradient);
+    box-shadow: 0 0 30px rgba(0, 184, 148, 0.2);
+    border: 1px solid var(--border-subtle);
+  }
+}
+
 .chat-content {
-  padding-top: 1rem !important; // évite que le contenu passe sous la navbar
-  padding-bottom: 5rem; // espace pour la zone de saisie
+  padding-top: 1rem !important;
+  padding-bottom: 5rem;
 }
 
 .chat-wrapper {
@@ -22,24 +73,290 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
+  
+  // Avatar avec effet pour ClassiqueSombreNature
+  [data-theme='classique-sombre-nature'] & {
+    border-radius: 50%;
+    border: 2px solid var(--nature-green);
+    box-shadow: 0 0 10px rgba(0, 184, 148, 0.3);
+  }
 }
 
 .message-bubble {
-  background-color: #f1f1f1;
+  background-color: var(--bubble-bg, #f1f1f1);
+  color: var(--bubble-color, #000);
   padding: 0.75rem 1rem;
   border-radius: 12px;
   font-size: 0.95rem;
   max-width: 70%;
-  color: #333;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  
+  // Style spécial pour ClassiqueSombreNature
+  [data-theme='classique-sombre-nature'] & {
+    background: var(--bubble-bg);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 60%;
+      background: linear-gradient(180deg, var(--nature-green), var(--classic-blue));
+      border-radius: 2px;
+    }
+  }
 }
 
 ion-footer {
-  --background: #fff;
-  border-top: 1px solid #ddd;
+  --background: #121212;
+  
+  [data-theme='classique-sombre-nature'] & {
+    --background: var(--input-bg);
+    border-top: 1px solid var(--border-subtle);
+  }
 }
 
-.message-input {
+.message-toolbar {
+  --background: #121212;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+  [data-theme='classique-sombre-nature'] & {
+    --background: var(--input-bg);
+  }
+}
+
+.message-bar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+
+.message-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg, #000);
+  border-radius: 2rem;
+  width: 100%;
+  padding: 0.5rem;
+  
+  // Style amélioré pour ClassiqueSombreNature
+  [data-theme='classique-sombre-nature'] & {
+    background: var(--glass-bg);
+    border: 2px solid var(--border-subtle);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    
+    &:focus-within {
+      border-color: var(--nature-green);
+      box-shadow: 0 0 20px rgba(0, 184, 148, 0.2);
+    }
+  }
+}
+
+.emoji-button {
+  font-size: 1.4rem;
+  
+  [data-theme='classique-sombre-nature'] & {
+    background: linear-gradient(135deg, #fdcb6e, #e17055);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(253, 203, 110, 0.4);
+    }
+  }
+}
+
+.theme-button {
+  font-size: 1.4rem;
+  color: #fff;
+  
+  [data-theme='classique-sombre-nature'] & {
+    background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(253, 121, 168, 0.4);
+    }
+  }
+}
+
+.input-field {
   flex: 1;
-  font-size: 0.95rem;
+  --padding-start: 0;
+  --padding-end: 0;
+  font-size: 1rem;
+  
+  [data-theme='classique-sombre-nature'] & {
+    --color: #ddd;
+    --placeholder-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.send-button {
+  --border-radius: 2rem;
+  height: 2.5rem;
+  font-size: 0.9rem;
+  
+  [data-theme='classique-sombre-nature'] & {
+    --background: linear-gradient(135deg, var(--classic-blue), var(--nature-green));
+    --color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(116, 185, 255, 0.4);
+    }
+  }
+}
+
+.emoji-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  background: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  
+  [data-theme='classique-sombre-nature'] & {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(20px);
+  }
+}
+
+.theme-picker {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f000;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  
+  [data-theme='classique-sombre-nature'] & {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(20px);
+  }
+  
+  button {
+    background: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #333;
+    
+    [data-theme='classique-sombre-nature'] & {
+      background: rgba(255, 255, 255, 0);
+      border: 1px solid var(--border-subtle);
+      color: #dddddd00;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--nature-green);
+        transform: translateY(-1px);
+      }
+      
+      &.active, &[data-active='true'] {
+        background: linear-gradient(135deg, var(--nature-green), var(--classic-blue));
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+      }
+    }
+    
+    &:hover {
+      background-color: #ddd;
+    }
+    
+    &.active {
+      background-color: #3880ff;
+      color: white;
+      border-color: #3880ff;
+    }
+  }
+}
+
+// Bouton spécial pour le thème ClassiqueSombreNature avec nom stylé
+.theme-picker button[data-theme='classique-sombre-nature'] {
+  position: relative;
+  min-width: 200px;
+  font-weight: 600;
+  
+  &::before {
+    content: '🌿 ';
+    margin-right: 5px;
+  }
+  
+  .theme-name {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    
+    .theme-word {
+      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    
+    .separator {
+      width: 1px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Animation d'apparition pour le thème
+[data-theme='classique-sombre-nature'] {
+  .message-bubble, .message-input-wrapper, .theme-picker {
+    animation: fadeInUp 0.6s ease-out;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

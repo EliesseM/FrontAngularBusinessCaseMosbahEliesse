@@ -1,41 +1,76 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Discussion</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="mobile-wrapper">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Discussion</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="chat-content" [fullscreen]="true">
-  <div class="chat-wrapper">
-    <div
-      *ngFor="let message of messages"
-      class="message-row"
-      [ngClass]="{ me: message.from === 'Moi', other: message.from !== 'Moi' }"
-    >
-      <!-- Avatar de l'autre utilisateur -->
-      <ion-avatar class="message-avatar" *ngIf="message.from !== 'Moi'">
-        <img [src]="avatar" />
-      </ion-avatar>
+  <ion-content class="chat-content" [fullscreen]="true">
+    <div class="chat-wrapper">
+      <div
+        *ngFor="let message of messages"
+        class="message-row"
+        [ngClass]="{ me: message.from === 'Moi', other: message.from !== 'Moi' }"
+      >
+        <!-- Avatar de l'autre utilisateur -->
+        <ion-avatar class="message-avatar" *ngIf="message.from !== 'Moi'">
+          <img [src]="avatar" />
+        </ion-avatar>
 
-      <div class="message-bubble">{{ message.content }}</div>
+        <div class="message-bubble">{{ message.content }}</div>
 
-      <!-- Ton avatar -->
-      <ion-avatar class="message-avatar" *ngIf="message.from === 'Moi'">
-        <img
-          src="https://www.maxicasting.com/wp-content/uploads/2024/06/449046919_1171673980848349_3091454694618699012_n-266x300.jpg"
-        />
-      </ion-avatar>
+        <!-- Ton avatar -->
+        <ion-avatar class="message-avatar" *ngIf="message.from === 'Moi'">
+          <img
+            src="https://www.maxicasting.com/wp-content/uploads/2024/06/449046919_1171673980848349_3091454694618699012_n-266x300.jpg"
+          />
+        </ion-avatar>
+      </div>
     </div>
-  </div>
-</ion-content>
+  </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-item lines="none">
-      <ion-input
-        [(ngModel)]="newMessage"
-        placeholder="Écrire un message..."
-      ></ion-input>
-      <ion-button slot="end" (click)="sendMessage()">Envoyer</ion-button>
-    </ion-item>
-  </ion-toolbar>
-</ion-footer>
+  <ion-footer>
+    <ion-toolbar class="message-toolbar">
+      <!-- message bar -->
+      <div class="message-bar-container">
+        <ion-button
+          fill="clear"
+          class="emoji-button"
+          (click)="toggleEmojiPicker()"
+          >😊</ion-button
+        >
+        <ion-button
+          fill="clear"
+          class="theme-button"
+          (click)="toggleThemePicker()"
+          >🎨</ion-button
+        >
+
+        <div class="message-input-wrapper">
+          <ion-input
+            [(ngModel)]="newMessage"
+            placeholder="Écrire un message..."
+            class="input-field"
+          ></ion-input>
+        </div>
+
+        <ion-button fill="solid" class="send-button" (click)="sendMessage()"
+          >Envoyer</ion-button
+        >
+      </div>
+    </ion-toolbar>
+    <!-- Bloc emojis -->
+    <div *ngIf="showEmojiPicker" class="emoji-picker">
+      <span *ngFor="let emoji of emojis" (click)="addEmoji(emoji)">
+        {{ emoji }}
+      </span>
+    </div>
+
+    <!-- Bloc thèmes -->
+    <div *ngIf="showThemePicker" class="theme-picker">
+      <button *ngFor="let t of themes" (click)="setTheme(t.value)">
+        {{ t.label }}
+      </button>
+    </div>
+  </ion-footer>
+</div>

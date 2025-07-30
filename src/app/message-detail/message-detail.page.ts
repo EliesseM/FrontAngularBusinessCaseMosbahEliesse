@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonAvatar, IonButton, IonContent, IonFooter, IonHeader, IonInput, IonItem, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonAvatar, IonButton, IonContent, IonFooter, IonHeader, IonInput, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,9 +9,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './message-detail.page.html',
   styleUrls: ['./message-detail.page.scss'],
   standalone: true,
-  imports: [IonTitle, IonHeader, IonAvatar, IonItem, IonContent, IonToolbar, CommonModule, FormsModule, IonFooter, IonContent, IonInput, IonButton,]
+  imports: [IonTitle, IonHeader, IonAvatar, IonContent, IonToolbar, CommonModule, FormsModule, IonFooter, IonContent, IonInput, IonButton,]
 })
-  
   
 export class MessageDetailPage implements OnInit {
 
@@ -20,6 +19,47 @@ export class MessageDetailPage implements OnInit {
   newMessage: string = '';
   name!: string;
   avatar!: string;
+
+  showEmojiPicker = false;
+  showThemePicker = false;
+
+  emojis = ['😀', '😂', '😍', '😎', '😭', '👍', '🎉']; // exemple d'emojis
+  
+  // 🌿 Thèmes mis à jour avec le nouveau thème
+  themes = [
+    { value: 'default', label: 'Classique' },
+    { value: 'dark', label: 'Sombre' },
+    { value: 'nature', label: 'Nature' },
+  ];
+
+  theme: string = 'default';
+
+  toggleEmojiPicker() {
+    this.showEmojiPicker = !this.showEmojiPicker;
+    if (this.showEmojiPicker) this.showThemePicker = false;
+  }
+
+  toggleThemePicker() {
+    this.showThemePicker = !this.showThemePicker;
+    if (this.showThemePicker) this.showEmojiPicker = false;
+  }
+
+  addEmoji(emoji: string) {
+    this.newMessage += emoji;
+  }
+
+  setTheme(theme: string) {
+    this.theme = theme;
+    this.showThemePicker = false;
+
+    // Appliquer le thème au niveau global (via <body>)
+    document.body.setAttribute('data-theme', theme);
+    
+    // Petite animation lors du changement de thème
+    if (theme === 'classique-sombre-nature') {
+      document.body.style.transition = 'all 0.5s ease';
+    }
+  }
 
   constructor(private route: ActivatedRoute) {}
 
@@ -62,7 +102,7 @@ export class MessageDetailPage implements OnInit {
       { from: 'Moi', content: 'Avec plaisir !' },
     ],
     '3': [
-      { from: 'Élodie', content: 'J’ai réservé, à bientôt :)' },
+      { from: 'Élodie', content: "J'ai réservé, à bientôt :)" },
       { from: 'Moi', content: 'Super, à bientôt !' },
     ],
   };

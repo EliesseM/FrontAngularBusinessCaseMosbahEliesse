@@ -1,227 +1,93 @@
-ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
-}
-
-ion-menu.md ion-content {
-  --padding-start: 8px;
-  --padding-end: 8px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
-}
-
-ion-menu.md ion-list {
-  padding: 20px 0;
-}
-
-ion-menu.md ion-note {
-  margin-bottom: 30px;
-}
-
-ion-menu.md ion-list-header,
-ion-menu.md ion-note {
-  padding-left: 10px;
-}
-
-ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-background-color-step-150, #d7d8da);
-}
-
-ion-menu.md ion-list#inbox-list ion-list-header {
-  font-size: 22px;
-  font-weight: 600;
-
-  min-height: 20px;
-}
-
-ion-menu.md ion-list#labels-list ion-list-header {
-  font-size: 16px;
-
-  margin-bottom: 18px;
-
-  color: #757575;
-
-  min-height: 26px;
-}
-
-ion-menu.md ion-item {
-  --padding-start: 10px;
-  --padding-end: 10px;
-  border-radius: 4px;
-}
-
-ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
-}
-
-ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
-}
-
-ion-menu.md ion-item ion-icon {
-  color: #616e7e;
-}
-
-ion-menu.md ion-item ion-label {
-  font-weight: 500;
-}
-
-ion-menu.ios ion-content {
-  --padding-bottom: 20px;
-}
-
-ion-menu.ios ion-list {
-  padding: 20px 0 0 0;
-}
-
-ion-menu.ios ion-note {
-  line-height: 24px;
-  margin-bottom: 20px;
-}
-
-ion-menu.ios ion-item {
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --min-height: 50px;
-}
-
-ion-menu.ios ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
-}
-
-ion-menu.ios ion-item ion-icon {
-  font-size: 24px;
-  color: #73849a;
-}
-
-ion-menu.ios ion-list#labels-list ion-list-header {
-  margin-bottom: 8px;
-}
-
-ion-menu.ios ion-list-header,
-ion-menu.ios ion-note {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-ion-menu.ios ion-note {
-  margin-bottom: 8px;
-}
-
-ion-note {
-  display: inline-block;
-  font-size: 16px;
-
-  color: var(--ion-color-medium-shade);
-}
-
-ion-item.selected {
-  --color: var(--ion-color-primary);
-}
-
-ion-toolbar {
-  --min-height: 60px;
-}
-
-ion-button {
-  color: white;
-  text-transform: none;
-}
-
-
-
-.custom-toolbar {
-  --padding-start: 0;
-  --padding-end: 0;
-  --min-height: auto;
-}
-
-.custom-toolbar-content {
-  display: flex;
-  flex-direction: row-reverse; /* Inverser titre et boutons */
-  align-items: center;
-  
-}
-
-.toolbar-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.logo-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
-  img {
-    max-height: 5rem;
-    object-fit: contain;
-  }
-}
-
-/* === Airbnb Style Toolbar === */
-.airbnb-toolbar {
-  --background: #ebebeb;
-  --ion-color-base: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  padding: 0.5rem 1rem;
+.coliving-toolbar {
+  --background: #ffffff;
   --min-height: 64px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 0 1rem;
+  z-index: 100;
 }
 
-.airbnb-toolbar-content {
+.coliving-toolbar-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* === Logo à gauche === */
-.airbnb-logo img {
-  height: 5rem;
+.coliving-logo img {
+  height: 48px;
+  max-width: 140px;
   object-fit: contain;
 }
 
-/* === Boutons centrés === */
-.airbnb-nav-buttons {
+.coliving-nav-buttons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
+  flex-wrap: wrap;
   justify-content: center;
-  flex-grow: 1;
+  flex: 1;
+
+  ion-button {
+    --padding-start: 0.75rem;
+    --padding-end: 0.75rem;
+    --border-radius: 20px;
+    --background: transparent;
+    --color: #484848;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: none;
+
+    &.selected {
+      background-color: rgba(var(--ion-color-primary-rgb), 0.1);
+      color: var(--ion-color-primary);
+    }
+
+    ion-icon {
+      margin-right: 0.4rem;
+    }
+  }
 }
 
-.airbnb-nav-buttons ion-button {
-  font-size: 1rem;
-  font-weight: 500;
-  --background: transparent;
-  color: #484848;
-  text-transform: none;
-  --color-hover: #000;
-  --ripple-color: transparent;
-  --box-shadow: none;
-  padding: 0;
-}
-
-/* === Actions à droite (langue, profil) === */
-.airbnb-right-actions {
+.coliving-right-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  ion-icon {
+    font-size: 22px;
+    color: #555;
+  }
+
+  ion-button {
+    --background: transparent;
+    --box-shadow: none;
+    padding: 0;
+  }
 }
 
-.airbnb-right-actions ion-icon {
-  font-size: 20px;
-  color: #555;
+/* ✅ Responsive: max 768px */
+@media (max-width: 768px) {
+  .coliving-toolbar-content {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .coliving-nav-buttons {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  .coliving-logo img {
+    height: 40px;
+  }
+
+  .coliving-right-actions {
+    justify-content: center;
+  }
 }
-
-/* === Supprime bordure ion-button globale === */
-ion-button {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-
-
-
-
-

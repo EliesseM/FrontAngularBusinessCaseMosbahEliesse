@@ -6,11 +6,24 @@
 
 <ion-content class="chat-content" [fullscreen]="true">
   <div class="chat-wrapper">
-    <div *ngFor="let message of messages" class="message-row">
-      <ion-avatar class="message-avatar">
-        <img [src]="message.avatar" alt="avatar" />
+    <div
+      *ngFor="let message of messages"
+      class="message-row"
+      [ngClass]="{ me: message.from === 'Moi', other: message.from !== 'Moi' }"
+    >
+      <!-- Avatar de l'autre utilisateur -->
+      <ion-avatar class="message-avatar" *ngIf="message.from !== 'Moi'">
+        <img [src]="avatar" />
       </ion-avatar>
-      <div class="message-bubble">{{ message.text }}</div>
+
+      <div class="message-bubble">{{ message.content }}</div>
+
+      <!-- Ton avatar -->
+      <ion-avatar class="message-avatar" *ngIf="message.from === 'Moi'">
+        <img
+          src="https://www.maxicasting.com/wp-content/uploads/2024/06/449046919_1171673980848349_3091454694618699012_n-266x300.jpg"
+        />
+      </ion-avatar>
     </div>
   </div>
 </ion-content>
@@ -21,11 +34,8 @@
       <ion-input
         [(ngModel)]="newMessage"
         placeholder="Écrire un message..."
-        class="message-input"
       ></ion-input>
-      <ion-button slot="end" fill="solid" (click)="sendMessage()"
-        >Envoyer</ion-button
-      >
+      <ion-button slot="end" (click)="sendMessage()">Envoyer</ion-button>
     </ion-item>
   </ion-toolbar>
 </ion-footer>

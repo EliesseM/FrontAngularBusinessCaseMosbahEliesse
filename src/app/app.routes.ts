@@ -12,8 +12,8 @@ export const routes: Routes = [
       import('./accueil/accueil.page').then((m) => m.AccueilPage),
   },
   {
-    path: 'sandbox',
-    loadComponent: () => import('./sandbox/sandbox.page').then( m => m.SandboxPage)
+    path: 'annonce',
+    loadComponent: () => import('./annonce/annonce.page').then( m => m.AnnoncePage)
   },
   {
     path: 'services',

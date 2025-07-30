@@ -1,18 +1,18 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonIcon, } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-sandbox',
+  selector: 'app-annonce',
   standalone: true,
-  templateUrl: './sandbox.page.html',
-  styleUrls: ['./sandbox.page.scss'],
+  templateUrl: './annonce.page.html',
+  styleUrls: ['./annonce.page.scss'],
   imports: [IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, CommonModule, FormsModule, IonButton, IonIcon,],
 })
 
 
-export class SandboxPage implements AfterViewInit {
+export class AnnoncePage implements AfterViewInit {
   
     sections = [
     {

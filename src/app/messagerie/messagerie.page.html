@@ -7,7 +7,11 @@
 <ion-content [fullscreen]="true">
   <div class="messages-container">
     <div *ngFor="let convo of conversations" class="message-card">
-      <ion-item [routerLink]="['/messages', convo.id]" lines="none">
+      <ion-item
+        [routerLink]="['/messages', convo.id]"
+        lines="none"
+        [queryParams]="{ name: convo.name, avatar: convo.avatar }"
+      >
         <ion-avatar slot="start">
           <img [src]="convo.avatar" alt="Avatar {{ convo.name }}" />
         </ion-avatar>

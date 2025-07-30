@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonAvatar, IonContent, IonHeader, IonItem, IonLabel, IonList, IonNote, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonAvatar, IonContent, IonHeader, IonItem, IonLabel, IonNote, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './messagerie.page.html',
   styleUrls: ['./messagerie.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonAvatar, IonItem, IonNote, IonLabel, IonList, RouterModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonAvatar, IonItem, IonNote, IonLabel, RouterModule]
 })
 export class MessageriePage implements OnInit {
 

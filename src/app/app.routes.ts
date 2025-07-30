@@ -3,13 +3,13 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'accueil/inbox',
     pathMatch: 'full',
   },
   {
-    path: 'folder/:id',
+    path: 'accueil/:id',
     loadComponent: () =>
-      import('./folder/folder.page').then((m) => m.FolderPage),
+      import('./accueil/accueil.page').then((m) => m.AccueilPage),
   },
   {
     path: 'sandbox',
@@ -18,7 +18,16 @@ export const routes: Routes = [
   {
     path: 'services',
     loadComponent: () => import('./services/services.page').then( m => m.ServicesPage)
+  },  {
+    path: 'messagerie',
+    loadComponent: () => import('./messagerie/messagerie.page').then( m => m.MessageriePage)
   },
+  {
+    path: 'message-detail',
+    loadComponent: () => import('./message-detail/message-detail.page').then( m => m.MessageDetailPage)
+  },
+
+
 
 
 

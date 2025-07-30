@@ -4,20 +4,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-list lines="none">
-    <ion-item
-      *ngFor="let convo of conversations"
-      routerLink="/messages/{{ convo.id }}"
-    >
-      <ion-avatar slot="start">
-        <img [src]="convo.avatar" alt="Avatar {{ convo.name }}" />
-      </ion-avatar>
-      <ion-label>
-        <h2>{{ convo.name }}</h2>
-        <p>{{ convo.lastMessage }}</p>
-      </ion-label>
-      <ion-note slot="end" color="medium">{{ convo.time }}</ion-note>
-    </ion-item>
-  </ion-list>
+<ion-content [fullscreen]="true">
+  <div class="messages-container">
+    <div *ngFor="let convo of conversations" class="message-card">
+      <ion-item [routerLink]="['/messages', convo.id]" lines="none">
+        <ion-avatar slot="start">
+          <img [src]="convo.avatar" alt="Avatar {{ convo.name }}" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ convo.name }}</h2>
+          <p>{{ convo.lastMessage }}</p>
+        </ion-label>
+        <ion-note slot="end" color="medium">{{ convo.time }}</ion-note>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

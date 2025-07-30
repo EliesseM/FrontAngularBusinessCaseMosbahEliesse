@@ -1,25 +1,45 @@
-.chat-container {
+.chat-content {
+  padding-top: 1rem !important; // évite que le contenu passe sous la navbar
+  padding-bottom: 5rem; // espace pour la zone de saisie
+}
+
+.chat-wrapper {
   display: flex;
   flex-direction: column;
+  max-width: 700px;
+  margin: 0;
+  padding-top: 10rem;
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-start;
   gap: 0.5rem;
-  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
 
-  .message {
-    padding: 0.75rem 1rem;
-    border-radius: 18px;
-    max-width: 75%;
-    font-size: 0.95rem;
-  }
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
 
-  .sent {
-    align-self: flex-end;
-    background: #4f46e5;
-    color: white;
-  }
+.message-bubble {
+  background-color: #f1f1f1;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  max-width: 70%;
+  color: #333;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
 
-  .received {
-    align-self: flex-start;
-    background: #f0f0f0;
-    color: #333;
-  }
+ion-footer {
+  --background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.message-input {
+  flex: 1;
+  font-size: 0.95rem;
 }

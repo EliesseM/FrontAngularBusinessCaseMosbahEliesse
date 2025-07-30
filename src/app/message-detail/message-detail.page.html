@@ -1,19 +1,31 @@
-<ion-content class="ion-padding">
-  <div class="chat-container">
-    <div class="message received">
-      Bonjour, je suis intéressé par l'annonce.
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Discussion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="chat-content" [fullscreen]="true">
+  <div class="chat-wrapper">
+    <div *ngFor="let message of messages" class="message-row">
+      <ion-avatar class="message-avatar">
+        <img [src]="message.avatar" alt="avatar" />
+      </ion-avatar>
+      <div class="message-bubble">{{ message.text }}</div>
     </div>
-    <div class="message sent">Bonjour, elle est toujours dispo :)</div>
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-input placeholder="Écrire un message..."></ion-input>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon name="send"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-item lines="none">
+      <ion-input
+        [(ngModel)]="newMessage"
+        placeholder="Écrire un message..."
+        class="message-input"
+      ></ion-input>
+      <ion-button slot="end" fill="solid" (click)="sendMessage()"
+        >Envoyer</ion-button
+      >
+    </ion-item>
   </ion-toolbar>
 </ion-footer>

@@ -1,5 +1,5 @@
 .messages-container {
-  padding-top: 5rem;
+  padding : 5rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem; /* ESPACE ENTRE CHAQUE CONVERSATION */
@@ -8,7 +8,7 @@
 .message-card {
   border-radius: 1.5rem;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #ffffff00;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   width: 30rem;
 }

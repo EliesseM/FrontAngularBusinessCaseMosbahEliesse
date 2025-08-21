@@ -6,7 +6,8 @@
 
 <ion-content [fullscreen]="true">
   <div class="messages-container">
-    <div *ngFor="let convo of conversations" class="message-card">
+    @for (convo of conversations; track convo.id) {
+    <div class="message-card">
       <ion-item
         [routerLink]="['/messages', convo.id]"
         lines="none"
@@ -22,5 +23,6 @@
         <ion-note slot="end" color="medium">{{ convo.time }}</ion-note>
       </ion-item>
     </div>
+    }
   </div>
 </ion-content>

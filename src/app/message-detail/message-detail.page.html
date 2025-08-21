@@ -7,25 +7,30 @@
 
   <ion-content class="chat-content" [fullscreen]="true">
     <div class="chat-wrapper">
+      @for (message of messages; track message.from) {
       <div
-        *ngFor="let message of messages"
         class="message-row"
         [ngClass]="{ me: message.from === 'Moi', other: message.from !== 'Moi' }"
       >
         <!-- Avatar de l'autre utilisateur -->
-        <ion-avatar class="message-avatar" *ngIf="message.from !== 'Moi'">
+        @if (message.from !== 'Moi') {
+        <ion-avatar class="message-avatar">
           <img [src]="avatar" />
         </ion-avatar>
+        }
 
         <div class="message-bubble">{{ message.content }}</div>
 
         <!-- Ton avatar -->
-        <ion-avatar class="message-avatar" *ngIf="message.from === 'Moi'">
+        @if (message.from === 'Moi') {
+        <ion-avatar class="message-avatar">
           <img
             src="https://www.maxicasting.com/wp-content/uploads/2024/06/449046919_1171673980848349_3091454694618699012_n-266x300.jpg"
           />
         </ion-avatar>
+        }
       </div>
+      }
     </div>
   </ion-content>
 
@@ -39,6 +44,7 @@
           (click)="toggleEmojiPicker()"
           >😊</ion-button
         >
+
         <ion-button
           fill="clear"
           class="theme-button"
@@ -54,23 +60,28 @@
           ></ion-input>
         </div>
 
-        <ion-button fill="solid" class="send-button" (click)="sendMessage()"
-          >Envoyer</ion-button
-        >
+        <ion-button fill="solid" class="send-button" (click)="sendMessage()">
+          Envoyer
+        </ion-button>
       </div>
     </ion-toolbar>
+
     <!-- Bloc emojis -->
-    <div *ngIf="showEmojiPicker" class="emoji-picker">
-      <span *ngFor="let emoji of emojis" (click)="addEmoji(emoji)">
-        {{ emoji }}
-      </span>
+    @if (showEmojiPicker) {
+    <div class="emoji-picker">
+      @for (emoji of emojis; track emoji) {
+      <span (click)="addEmoji(emoji)">{{ emoji }}</span>
+      }
     </div>
+    }
 
     <!-- Bloc thèmes -->
-    <div *ngIf="showThemePicker" class="theme-picker">
-      <button *ngFor="let t of themes" (click)="setTheme(t.value)">
-        {{ t.label }}
-      </button>
+    @if (showThemePicker) {
+    <div class="theme-picker">
+      @for (t of themes; track t.value) {
+      <button (click)="setTheme(t.value)">{{ t.label }}</button>
+      }
     </div>
+    }
   </ion-footer>
 </div>

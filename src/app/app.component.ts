@@ -13,9 +13,9 @@ import * as allicons from 'ionicons/icons';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Accueil', url: '/accueil/inbox', icon: 'planet' },
+    { title: 'Accueil', url: '/accueil', icon: 'planet' },
     { title: 'Annonces', url: '/annonce', icon: 'bed' },
-    { title: 'Services', url: '/services', icon: 'construct' },
+    { title: 'Services', url: '/service', icon: 'construct' },
     { title: 'Messagerie', url: '/messagerie', icon: 'mail' },
     
   ];

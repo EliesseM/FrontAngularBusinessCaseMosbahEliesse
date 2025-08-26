@@ -5,12 +5,12 @@ import { IonContent, IonHeader, IonImg, IonTitle, IonToolbar } from '@ionic/angu
 
 @Component({
   selector: 'app-services',
-  templateUrl: './services.page.html',
-  styleUrls: ['./services.page.scss'],
+  templateUrl: './service.page.html',
+  styleUrls: ['./service.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonImg]
 })
-export class ServicesPage implements OnInit {
+export class ServicePage implements OnInit {
 
   constructor() { }
 

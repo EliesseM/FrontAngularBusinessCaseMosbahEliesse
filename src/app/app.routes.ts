@@ -3,11 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'accueil/inbox',
+    redirectTo: 'accueil',
     pathMatch: 'full',
   },
   {
-    path: 'accueil/:id',
+    path: 'accueil',
     loadComponent: () =>
       import('./components/accueil/accueil.page').then((m) => m.AccueilPage),
   },
@@ -16,8 +16,8 @@ export const routes: Routes = [
     loadComponent: () => import('./components/annonce/annonce.page').then( m => m.AnnoncePage)
   },
   {
-    path: 'services',
-    loadComponent: () => import('./components/service/services.page').then( m => m.ServicesPage)
+    path: 'service',
+    loadComponent: () => import('./components/service/service.page').then( m => m.ServicePage)
   },
   {
     path: 'messagerie',

@@ -1,310 +1,49 @@
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonIcon, } from '@ionic/angular/standalone';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonIcon } from '@ionic/angular/standalone';
+import { AnnonceService } from '../../services/annonce.service';
+import { Annonce } from '../../models/annonce.interface';
 
 @Component({
   selector: 'app-annonce',
   standalone: true,
   templateUrl: './annonce.page.html',
   styleUrls: ['./annonce.page.scss'],
-  imports: [IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, CommonModule, FormsModule, IonButton, IonIcon,],
+  imports: [IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, CommonModule, FormsModule, IonButton, IonIcon],
 })
+export class AnnoncePage implements AfterViewInit, OnInit {
+  sections: { titre: string; annonces: Annonce[] }[] = [];
+  annonces: Annonce[] = [];
+  @ViewChildren('scrollContainers') scrollContainers!: QueryList<ElementRef>;
 
+  constructor(private annonceService: AnnonceService) {}
 
-export class AnnoncePage implements AfterViewInit {
-  
-    sections = [
-    {
-      titre: 'Populaires',
-      annonces: [ {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-    },
-          ]
-      
-    },
-    {
-      titre: 'Nouveautés',
-      annonces: [
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-    },]
-    },
-    {
-      titre: 'Coliving Mixte',
-      annonces: [{
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-        },
-        {
-      Annonce_id: 4,
-      titre: 'Maison partagée à Lyon',
-      description: 'Grande maison avec jardin',
-      prix_journee: 35,
-      Nb_places: 4,
-      Mixte: false,
-      image: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg',
-    },
-        {
-      Annonce_id: 5,
-      titre: 'Coliving à Paris',
-      description: 'Appartement moderne et lumineux',
-      prix_journee: 45,
-      Nb_places: 3,
-      Mixte: true,
-      image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o=',
-    },]
-      }
-    
-  ];
+  ngOnInit() {
+    this.annonceService.getAnnonces().subscribe({
+      next: (data) => {
+        this.annonces = data;
+        console.log(this.annonces);
+        this.sections = [
+          { titre: 'Toutes les annonces', annonces: this.annonces }
+          // Tu peux ajouter ici d'autres sections selon tes critères
+        ];
+        console.log(this.sections);
+      },
+    }) ;
+  }
+//  chargeAnnouncements() {
+//     this.isLoading = true
 
-   @ViewChildren('scrollContainers') scrollContainers!: QueryList<ElementRef>;
+//     this.announcementService.getAnnouncements().subscribe({
+//       next: (data) => {
 
-  
-
-  
+//         this.announcements = data;
+//         this.isLoading = false;
+//         console.log(this.announcements);
+//       },
+//     });
+//   }
 
   ngAfterViewInit() {}
 
@@ -324,5 +63,3 @@ export class AnnoncePage implements AfterViewInit {
     if (container) container.scrollBy({ left: -600, behavior: 'smooth' });
   }
 }
-
-

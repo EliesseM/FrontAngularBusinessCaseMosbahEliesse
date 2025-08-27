@@ -36,6 +36,7 @@ export class AccueilPage implements OnInit {
       destination: [''],
       dateArrivee: [''],
       dateDepart: [''],
+      voyageurs: ['']
     });
   }
 
@@ -49,12 +50,12 @@ export class AccueilPage implements OnInit {
     this.currentCalendar = null;
   }
 
-  selectDate(event: any) {
-    const value = event.detail.value;
-    if (this.currentCalendar) {
-      this.searchForm.patchValue({ 
-        [this.currentCalendar === 'arrivee' ? 'dateArrivee' : 'dateDepart']: value 
-      });
+    selectDate(event: any) {
+    const dateStr = event.detail.value;
+    if (this.currentCalendar === 'depart') {
+      this.searchForm.get('dateDepart')?.setValue(dateStr);
+    } else if (this.currentCalendar === 'arrivee') {
+      this.searchForm.get('dateArrivee')?.setValue(dateStr);
     }
     this.closeCalendar();
   }

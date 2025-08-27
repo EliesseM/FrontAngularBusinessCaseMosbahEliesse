@@ -50,16 +50,21 @@ export class AccueilPage implements OnInit {
     this.currentCalendar = null;
   }
 
-    selectDate(event: any) {
-    const dateStr = event.detail.value;
-    if (this.currentCalendar === 'depart') {
-      this.searchForm.get('dateDepart')?.setValue(dateStr);
-    } else if (this.currentCalendar === 'arrivee') {
-      this.searchForm.get('dateArrivee')?.setValue(dateStr);
-    }
-    this.closeCalendar();
+  selectDate(event: any) {
+  const isoDate = event.detail.value; // ex: 2025-08-27T00:00:00.000Z
+  const date = new Date(isoDate);
+
+  // format d/m/y
+  const formatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+  if (this.currentCalendar === 'depart') {
+    this.searchForm.get('dateDepart')?.setValue(formatted);
+  } else if (this.currentCalendar === 'arrivee') {
+    this.searchForm.get('dateArrivee')?.setValue(formatted);
   }
 
+  this.closeCalendar();
+}
   rechercher() {
     console.log('Formulaire :', this.searchForm.value);
   }

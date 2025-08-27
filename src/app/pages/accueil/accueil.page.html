@@ -1,0 +1,80 @@
+<ion-content fullscreen>
+  <section class="home-wrapper" [attr.inert]="isCalendarOpen ? true : null">
+    <!-- Barre de recherche -->
+    <form [formGroup]="searchForm" (submit)="rechercher()" class="search-bar">
+      <ion-item lines="none">
+        <ion-input
+          placeholder="Destination"
+          formControlName="destination"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-input
+          placeholder="Départ"
+          readonly
+          formControlName="dateDepart"
+          (click)="openCalendar('depart')"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-input
+          placeholder="Arrivée"
+          readonly
+          formControlName="dateArrivee"
+          (click)="openCalendar('arrivee')"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-input
+          placeholder="Voyageurs"
+          type="number"
+          min="1"
+          formControlName="voyageurs"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-button type="submit" color="primary">
+        <ion-icon name="search-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </form>
+
+    <!-- Texte accueil -->
+    <div class="home-text">
+      <h1><span>Cosphere</span>, votre coliving moderne</h1>
+      <p>
+        Découvrez un espace où vivre, travailler et partager prennent tout leur
+        sens. Cosphere vous connecte à une communauté inspirante, dans des lieux
+        pensés pour votre bien-être.
+      </p>
+    </div>
+
+    <!-- Images -->
+    <div class="home-images">
+      <ion-img
+        src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img/https://www.maisonsberval.fr/wp-content/uploads/ARRIERE-600-1070x624-c-center.jpg"
+      ></ion-img>
+      <ion-img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/525656167.jpg?k=9513043b491b940693aaa33be7f06816eaea9d6c1354068de654cfeecb3c09b0&o="
+      ></ion-img>
+    </div>
+  </section>
+
+  @if (isCalendarOpen) {
+  <ion-modal [isOpen]="true" (didDismiss)="closeCalendar()">
+    <ion-content class="calendar-modal">
+      <ion-datetime
+        [presentation]="'date'"
+        (ionChange)="selectDate($event)"
+        #calendar
+      >
+      </ion-datetime>
+    </ion-content>
+  </ion-modal>
+  }
+</ion-content>

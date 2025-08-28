@@ -1,9 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { 
   IonContent, IonImg, IonItem, IonInput, IonButton, IonIcon, IonModal, IonDatetime 
 } from '@ionic/angular/standalone';
+import { Annonce } from '../annonce/models/annonce.interface';
+import { AnnonceService } from '../annonce/services/annonce.service';
 
 @Component({
   selector: 'app-accueil',
@@ -18,6 +20,11 @@ import {
 export class AccueilPage implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private fb = inject(FormBuilder);
+
+  sections: { titre: string; annonces: Annonce[] }[] = [];
+  @ViewChildren('scrollContainers') scrollContainers!: QueryList<ElementRef>;
+
+  constructor(private annonceService: AnnonceService) {}
 
   searchForm!: FormGroup;
 
@@ -38,7 +45,34 @@ export class AccueilPage implements OnInit {
       dateDepart: [''],
       voyageurs: ['']
     });
+
+    this.annonceService.getAnnonces().subscribe((annonces: Annonce[]) => {
+      this.sections = [
+        { titre: 'Toutes les annonces', annonces }
+        // Tu peux ajouter d'autres sections ici (ex: par catégorie)
+      ];
+      console.log(this.sections);
+    });
   }
+
+  private getScrollElement(sectionTitre: string): HTMLElement | null {
+    return (
+      this.scrollContainers.find(
+        el => el.nativeElement.getAttribute('data-section') === sectionTitre
+      )?.nativeElement || null
+    );
+  }
+
+  scrollRight(sectionTitre: string) {
+    const container = this.getScrollElement(sectionTitre);
+    if (container) container.scrollBy({ left: 600, behavior: 'smooth' });
+  }
+
+  scrollLeft(sectionTitre: string) {
+    const container = this.getScrollElement(sectionTitre);
+    if (container) container.scrollBy({ left: -600, behavior: 'smooth' });
+  }
+
 
   openCalendar(type: 'arrivee' | 'depart') {
     this.currentCalendar = type;
@@ -68,4 +102,6 @@ export class AccueilPage implements OnInit {
   rechercher() {
     console.log('Formulaire :', this.searchForm.value);
   }
+
 }
+

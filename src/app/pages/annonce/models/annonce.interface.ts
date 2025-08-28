@@ -5,4 +5,5 @@ export interface Annonce {
     prixJournee: number;
     nbPlaces: number;
     mixte: boolean;
+    imageUrl?: string;
 }

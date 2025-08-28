@@ -1,4 +1,4 @@
-<ion-content fullscreen>
+<ion-content>
   <section class="home-wrapper" [attr.inert]="isCalendarOpen ? true : null">
     <!-- Barre de recherche -->
     <form [formGroup]="searchForm" (submit)="rechercher()" class="search-bar">
@@ -75,4 +75,64 @@
     </ng-template>
   </ion-modal>
   }
+
+  <!-- SECTIONS D'ANNONCES -->
+  <div class="sections-container">
+    @for (section of sections; track section.titre) {
+    <div class="section-wrapper">
+      <div class="section-header">
+        <h2>{{ section.titre }}</h2>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.5rem">
+        <!-- Bouton gauche -->
+        <ion-button fill="clear" (click)="scrollLeft(section.titre)">
+          <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+
+        <!-- Conteneur scrollable -->
+        <div
+          class="annonces-grid"
+          #scrollContainers
+          [attr.data-section]="section.titre"
+        >
+          @for (annonce of section.annonces; track annonce.id || $index) {
+          <div class="annonce-card">
+            <div class="card-image">
+              <img
+                [src]="annonce.imageUrl || 'https://picsum.photos/300/200'"
+                alt="{{ annonce.titre }}"
+              />
+
+              <div class="price-badge">{{ annonce.prixJournee }} €/jour</div>
+              <button class="favorite-btn">
+                <ion-icon name="heart-outline"></ion-icon>
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="card-title">{{ annonce.titre }}</div>
+              <div class="card-location">
+                <ion-icon name="people-outline"></ion-icon>
+                {{ annonce.nbPlaces }} places
+              </div>
+              <div class="card-features">
+                <div class="feature">
+                  <ion-icon name="home-outline"></ion-icon>
+                  {{ annonce.mixte ? 'Mixte' : 'Non mixte' }}
+                </div>
+              </div>
+              <p class="card-description">{{ annonce.description }}</p>
+            </div>
+          </div>
+          }
+        </div>
+
+        <!-- Bouton droit -->
+        <ion-button fill="clear" (click)="scrollRight(section.titre)">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    }
+  </div>
 </ion-content>

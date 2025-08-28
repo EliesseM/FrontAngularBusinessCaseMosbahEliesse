@@ -17,6 +17,8 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import * as allicons from 'ionicons/icons';
+import { LoginService } from './pages/login/services/login.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -34,9 +36,14 @@ import * as allicons from 'ionicons/icons';
     IonHeader,
     IonToolbar,
     IonButton,
+    CommonModule
   ],
 })
 export class AppComponent {
+
+  private auth = inject(LoginService);
+  currentUser$ = this.auth.currentUser$;
+
   public appPages = [
     { title: 'Accueil', url: '/accueil', icon: 'planet' },
     { title: 'Annonces', url: '/annonce', icon: 'bed' },

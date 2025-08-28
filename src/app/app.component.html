@@ -26,14 +26,23 @@
           }
         </div>
 
+        <!-- Bouton profil / connexion -->
+        @if (currentUser$ | async; as user) {
+        <!-- Utilisateur connecté -->
+        <ion-button routerLink="/profil" fill="clear">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          {{ user.username }}
+        </ion-button>
+        } @else {
+        <!-- Utilisateur non connecté -->
+        <ion-button fill="clear" routerLink="/login">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          Se connecter
+        </ion-button>
+        }
         <!-- Actions -->
         <div class="coliving-right-actions">
           <ion-icon name="globe-outline"></ion-icon>
-
-          <!-- Bouton connexion -->
-          <ion-button fill="clear" routerLink="/login">
-            <ion-icon name="person-circle-outline"></ion-icon>
-          </ion-button>
 
           <!-- Hamburger -->
           <ion-button class="menu-toggle" fill="clear">

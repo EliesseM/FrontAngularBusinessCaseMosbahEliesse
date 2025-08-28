@@ -37,7 +37,7 @@ export class LoginPage {
     const { username, password } = this.form.value;
 
     this.auth.login(username!, password!).subscribe({
-      next: () => {
+      next: (user) => {
         this.loading = false;
         this.router.navigateByUrl('/accueil');
       },

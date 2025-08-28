@@ -1,0 +1,58 @@
+<ion-content class="login-content" fullscreen>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h1>Connexion</h1>
+
+      @if (errorMsg) {
+      <ion-note color="danger" class="error-msg">{{ errorMsg }}</ion-note>
+      }
+
+      <form [formGroup]="form" (submit)="submit()" class="login-form">
+        <ion-item lines="full">
+          <ion-label position="stacked">Identifiant</ion-label>
+          <ion-input
+            formControlName="username"
+            placeholder="Email ou pseudo"
+            autocomplete="username"
+          >
+          </ion-input>
+        </ion-item>
+
+        @if (form.get('username')?.touched && form.get('username')?.invalid) {
+        <ion-note color="danger" class="field-error">Requis</ion-note>
+        }
+
+        <ion-item lines="full">
+          <ion-label position="stacked">Mot de passe</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+          >
+          </ion-input>
+        </ion-item>
+
+        @if (form.get('password')?.touched && form.get('password')?.invalid) {
+        <ion-note color="danger" class="field-error">
+          Minimum 8 caractères
+        </ion-note>
+        }
+
+        <ion-button
+          type="submit"
+          expand="block"
+          [disabled]="loading || form.invalid"
+        >
+          @if (loading) {
+          <ion-spinner></ion-spinner>
+          } @else { Se connecter }
+        </ion-button>
+      </form>
+
+      <div class="login-help">
+        <a routerLink="/register">Créer un compte</a>
+      </div>
+    </div>
+  </div>
+</ion-content>

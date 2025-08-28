@@ -28,11 +28,7 @@ import {
   Router,
   RouterLink,
   UrlSerializer
-} from "./chunk-VKYZRDEC.js";
-import {
-  NG_VALUE_ACCESSOR,
-  NgControl
-} from "./chunk-3YFKZUHZ.js";
+} from "./chunk-X4OOYIHZ.js";
 import {
   iosTransitionAnimation
 } from "./chunk-B26ZTDPM.js";
@@ -112,7 +108,12 @@ import {
   printIonWarning,
   saveConfig
 } from "./chunk-2H3NLAAY.js";
-import "./chunk-ZVXAXFGG.js";
+import "./chunk-GHVOAMWT.js";
+import "./chunk-EORHETVP.js";
+import {
+  NG_VALUE_ACCESSOR,
+  NgControl
+} from "./chunk-3YFKZUHZ.js";
 import {
   CommonModule,
   Location,
@@ -120,7 +121,6 @@ import {
   NgIf,
   NgTemplateOutlet
 } from "./chunk-SNXYRWVN.js";
-import "./chunk-EORHETVP.js";
 import "./chunk-636JCMZ5.js";
 import {
   APP_INITIALIZER,

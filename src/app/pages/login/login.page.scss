@@ -1,0 +1,38 @@
+
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 10rem;
+}
+
+.login-card {
+  width: min(420px, 92vw);
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  height: 20rem;
+
+  h1 {
+    margin: 0 0 12px 0;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .error-msg {
+    display: block;
+    margin: 8px 0 16px 0;
+    text-align: center;
+  }
+}
+/* Si l’écran est très bas (smartphone paysage ou petit écran) */
+@media (max-height: 60rem) {
+  .login-wrapper {
+    align-items: flex-start; /* colle en haut */
+    padding-top: 14rem;       /* petit espace pour respirer */
+    width: 100%;          /* prend toute la largeur */
+  }
+}
